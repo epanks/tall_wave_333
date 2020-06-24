@@ -617,6 +617,8 @@ input:invalid, textarea:invalid, select:invalid {
 
 .container {
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 640px) {

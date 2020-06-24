@@ -1,6 +1,6 @@
 <div class="bg-cool-gray-800" x-data="{ open: false }">
     <div class="flex justify-between flex-col md:flex-row items-center">
-        <div class="flex justify-between w-full md:w-auto px-4 py-4 border-b border-cool-gray-600 md:border-b-0">
+        <div class="flex justify-between w-full md:w-auto px-4 py-4 bg-cool-gray-900 md:bg-transparent md:border-b-0">
             <div>
                 <a href="/" class="text-white font-semibold text-lg">
                     {{ config('app.name') }}
@@ -17,19 +17,30 @@
             </div>
         </div>
         <div x-bind:class="{ 'hidden':!open }"
-            class="leading-loose py-1 md:flex md:items-center justify-between w-full">
-            <div class="flex flex-col md:flex-row md:items-center">
+            class="leading-loose py-1 md:py-0 md:flex md:items-center justify-between w-full">
+            <div class="flex flex-col md:flex-row md:items-center py-2 md:py-0">
                 <a href="#" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Balai</a>
                 <a href="#" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Database</a>
             </div>
             <div class="flex flex-col md:flex-row md:items-center">
                 @auth
-                <div>
+                <div x-data="{ dropdownIsOpen:false }" class="border-t border-cool-gray-600 py-4 md:py-0">
                     <div>
-                        {{ auth()->user()->name }}
+                        <button @click="dropdownIsOpen = !dropdownIsOpen"
+                            class="flex items-center focus:outline-none px-4 md:px-0">
+                            <div class="flex-shrink-0 mr-2">
+                                <img class="w-8 h-8 rounded object-center object-cover"
+                                    src="{{ auth()->user()->gravatar() }}">
+                            </div>
+                            <div class="block text-cool-gray-400 hover:text-white pr-4 md:py-4">
+                                {{ auth()->user()->name }}
+                            </div>
+                        </button>
                     </div>
-                    <div class="absolute top-0 right-0 mr-4 mt-12 bg-cool-gray-700 w-56 rounded shadow">
-                        <a href="" class="block text-cool-gray-400 hover:text-white px-4">Setting</a>
+                    <div :class="{ 'md:hidden': !dropdownIsOpen }"
+                        class="md:absolute top-0 right-0 md:mr-4 mt-2 md:mt-15 md:bg-cool-gray-700 md:w-56 md:rounded md:shadow md:py-2 leading-relaxed md:leading-loose">
+                        <a href="{{ route('settings') }}"
+                            class="block text-cool-gray-400 hover:text-white px-4">Settings</a>
                         <a href="" class="block text-cool-gray-400 hover:text-white px-4">Profile</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
