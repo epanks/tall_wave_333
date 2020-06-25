@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 
 Route::livewire('settings', 'account.edit')->layout('layouts.app', ['tittle' => 'Settings'])->name('settings');
+Route::livewire('user/{identifier}', 'account.show')->layout('layouts.app')->name('account.show');
 
 Route::middleware('guest')->group(function () {
     Route::view('login', 'auth.login')->name('login');
@@ -22,4 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', 'Auth\LogoutController')->name('logout');
 
     Route::view('password/confirm', 'auth.passwords.confirm')->name('password.confirm');
+
+    Route::livewire('/balai-list', 'balai.balai-list')->layout('layouts.app')->name('balai-list');
+    Route::livewire('/balai-paket-list/{id}', 'balai.balai-paket-list')->layout('layouts.app')->name('balai-paket-list');
 });

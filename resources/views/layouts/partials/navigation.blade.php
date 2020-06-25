@@ -1,6 +1,6 @@
-<div class="bg-cool-gray-800" x-data="{ open: false }">
+<div class="bg-indigo-500" x-data="{ open: false }">
     <div class="flex justify-between flex-col md:flex-row items-center">
-        <div class="flex justify-between w-full md:w-auto px-4 py-4 bg-cool-gray-900 md:bg-transparent md:border-b-0">
+        <div class="flex justify-between w-full md:w-auto px-4 py-4 bg-indigo-500 md:bg-transparent md:border-b-0">
             <div>
                 <a href="/" class="text-white font-semibold text-lg">
                     {{ config('app.name') }}
@@ -18,9 +18,13 @@
         </div>
         <div x-bind:class="{ 'hidden':!open }"
             class="leading-loose py-1 md:py-0 md:flex md:items-center justify-between w-full">
+
             <div class="flex flex-col md:flex-row md:items-center py-2 md:py-0">
-                <a href="#" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Balai</a>
+                @auth
+                <a href="{{ route('balai-list') }}"
+                    class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Balai</a>
                 <a href="#" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Database</a>
+                @endauth
             </div>
             <div class="flex flex-col md:flex-row md:items-center">
                 @auth
@@ -41,7 +45,8 @@
                         class="md:absolute top-0 right-0 md:mr-4 mt-2 md:mt-15 md:bg-cool-gray-700 md:w-56 md:rounded md:shadow md:py-2 leading-relaxed md:leading-loose">
                         <a href="{{ route('settings') }}"
                             class="block text-cool-gray-400 hover:text-white px-4">Settings</a>
-                        <a href="" class="block text-cool-gray-400 hover:text-white px-4">Profile</a>
+                        <a href="{{ route('account.show',auth()->user()->usernameOrHash) }}"
+                            class="block text-cool-gray-400 hover:text-white px-4">Profile</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             class="block text-cool-gray-400 hover:text-white px-4">

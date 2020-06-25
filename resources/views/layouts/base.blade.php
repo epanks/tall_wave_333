@@ -9,6 +9,8 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -16,12 +18,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 
 <body class="antialiased font-sans">
     @yield('body')
 
-    <script src="{{ mix('js/app.js') }}"></script>
     @livewireScripts
 </body>
 

@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->picture ? "/storage/{$this->picture}" : "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?&s=" . $size;
     }
+
+    public function getUsernameOrHashAttribute()
+    {
+        return $this->username ?? $this->hash;
+    }
 }
