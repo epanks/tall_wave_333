@@ -16,6 +16,7 @@
 
     <div class="py-0">
         <h1 class="capitalize text-lg text-cool-gray-700 mb-5 font-bold text-center">DAFTAR PAKET
+            {{-- {{ $databalai->nmbalai }} --}}
         </h1>
         <table class="shadow-lg bg-white">
             <thead>
@@ -47,7 +48,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{  }}
+        {{-- {{ $databalaipaket->links() }} --}}
         <div>
         </div>
     </div>

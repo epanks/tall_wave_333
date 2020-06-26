@@ -11,6 +11,7 @@ class BalaiPaketList extends Component
 {
     use WithPagination;
     public $databalaipaket;
+    public $databalai;
 
     public function mount($id)
     {
@@ -20,6 +21,7 @@ class BalaiPaketList extends Component
                 'ta' => 2020
             ])
             ->get();
+        $this->databalai = Balai::find($id)->get();
     }
 
     public function render()
@@ -30,9 +32,10 @@ class BalaiPaketList extends Component
         //     'ta' => 2020
         // ]);
         //     ->paginate(10);
-        //dd($this->databalaipaket);
+        //dd($this->databalai);
         return view('livewire.balai.balai-paket-list', [
-            'databalaipaket' => $this->databalaipaket
+            'databalaipaket' => $this->databalaipaket,
+            'databalai' => $this->databalai
         ]);
     }
 }
