@@ -23,7 +23,7 @@
                 @auth
                 <a href="{{ route('balai-list') }}"
                     class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Balai</a>
-                <a href="#" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Database</a>
+                <a href="{{ route('balai-usulan-list') }}" class="block text-cool-gray-400 hover:text-white px-4 md:py-4">Program</a>
                 @endauth
             </div>
             <div class="flex flex-col md:flex-row md:items-center">

@@ -10,14 +10,16 @@ class BalaiList extends Component
 {
     use WithPagination;
 
-    //public $search;
-
     public function render()
     {
-        $databalai = Balai::where('wilayah_id', 3)->paginate(10);
-        //dd($databalai);
-        // $searchTerm = '%' . $this->search . '%';
-        // $dataSearch = Balai::where('nmnmbalai', 'like', $searchTerm)->where('wilayah_id', 3)->paginate(10);
+        $databalai = Balai::with('paket', 'progres')
+            ->where([
+                'wilayah_id' => 3
+            ])
+            ->whereHas('paket', function ($query) {
+                $query->whereta(2020);
+            })
+            ->paginate(10);
         return view('livewire.balai.balai-list', compact('databalai'));
     }
 }

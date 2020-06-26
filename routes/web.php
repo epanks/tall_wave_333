@@ -23,7 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', 'Auth\LogoutController')->name('logout');
 
     Route::view('password/confirm', 'auth.passwords.confirm')->name('password.confirm');
-
+    //Progres
     Route::livewire('/balai-list', 'balai.balai-list')->layout('layouts.app')->name('balai-list');
     Route::livewire('/balai-paket-list/{id}', 'balai.balai-paket-list')->layout('layouts.app')->name('balai-paket-list');
+
+    //Program
+    Route::livewire('/balai-usulan-list', 'program.balai-usulan-list')->layout('layouts.app')->name('balai-usulan-list');
 });
