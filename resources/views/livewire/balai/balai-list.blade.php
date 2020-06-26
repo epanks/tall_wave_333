@@ -31,7 +31,7 @@
                 @foreach($databalai as $no => $row)
                 <tr>
                     <td class="border px-4 py-2">{{$no+1}}</td>
-                    <td class="border px-4 py-2"><a href="/balai-paket-list/{{$row->id}}">{{$row->nmbalai}}</td>
+                    <td class="border px-4 py-2"><a href={{ route('balai-paket-list',$row->id)}}>{{$row->nmbalai}}</td>
                     <td class="border px-4 py-2 text-right">{{number_format($row->paket->sum('pagurmp'))}}</td>
                     <td class="border px-4 py-2 text-right">{{number_format($row->progres->sum('keuangan'))}}</td>
                     <td class="border px-4 py-2 text-right">

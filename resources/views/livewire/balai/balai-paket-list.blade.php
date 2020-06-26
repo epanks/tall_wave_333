@@ -15,7 +15,8 @@
     </div> --}}
 
     <div class="py-0">
-        <h1 class="capitalize text-lg text-cool-gray-700 mb-5 font-bold text-center">Daftar Balai</h1>
+        <h1 class="capitalize text-lg text-cool-gray-700 mb-5 font-bold text-center">DAFTAR PAKET
+        </h1>
         <table class="shadow-lg bg-white">
             <thead>
                 <tr>
@@ -25,23 +26,28 @@
                     <th class="bg-indigo-300 border px-4 py-2">Keuangan</th>
                     <th class="bg-indigo-300 border px-4 py-2">Progres Keuangan</th>
                     <th class="bg-indigo-300 border px-4 py-2">Progres Fisik</th>
+                    <th class="bg-indigo-300 border px-4 py-2">Kodeoutput</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($databalaipaket as $no => $row)
                 <tr>
-                    <td class="border px-4 py-2">{{$no+1}}</td>
-                    <td class="border px-4 py-2"><a href="/balai-paket-list/{{$row->id}}">{{$row->nmbalai}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->paket->sum('pagurmp'))}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->sum('keuangan'))}}</td>
+                    <td class="border px-4 py-2">#</td>
+                    <td class="border px-4 py-2">{{$row->nmpaket}}</td>
+                    <td class="border px-4 py-2 text-right">{{number_format($row->pagurmp)}}</td>
                     <td class="border px-4 py-2 text-right">
-                        {{number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2) == 0 ? 0 : number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2)}}
+                        {{$row->progres->keuangan == 0 ? 0 : number_format($row->progres->keuangan)}}
                     </td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->avg('fisik'),2)}}</td>
+                    <td class="border px-4 py-2 text-right">
+                        {{$row->pagurmp == 0 ? 0 : number_format((($row->progres->keuangan)/($row->pagurmp)*100),2)}}
+                    </td>
+                    <td class="border px-4 py-2 text-right">{{number_format(($row->progres->fisik),2)}}</td>
+                    <td class="border px-4 py-2">{{ $row->kodeoutput->nmoutput }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {{  }}
         <div>
         </div>
     </div>
