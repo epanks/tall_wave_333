@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Das extends Model
 {
+    protected $guarded = [];
     protected $table = 'das';
-    // protected $primaryKey = 'kddas';
-    // public $incrementing = false;
-    // protected $keyType = 'string';
-    protected $fillable = [
-        'kddas', 'nmdas', 'kdws'
-    ];
+    protected $primaryKey = 'kddas';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    // public function ws()
-    // {
-    //     return $this->belongsTo(Ws::class, 'kdws', 'kdws');
-    // }
+    public function ws()
+    {
+        return $this->belongsTo(Ws::class, 'kdws', 'kdws');
+    }
 }

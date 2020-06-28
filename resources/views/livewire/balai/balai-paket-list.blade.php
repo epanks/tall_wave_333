@@ -19,21 +19,33 @@
             {{ $databalai->nmbalai }}
         </h1>
         <table class="shadow-lg bg-white">
-            <thead>
+            <thead class="bg-indigo-300 border px-4 py-2 font-bold">
                 <tr>
-                    <th class="bg-indigo-300 border px-4 py-2">No</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Nama Balai</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Pagu</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Keuangan</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Progres Keuangan</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Progres Fisik</th>
-                    {{-- <th class="bg-indigo-300 border px-4 py-2">Kodeoutput</th> --}}
+                    <th>No</th>
+                    <th>Nama Balai</th>
+                    <th>Pagu</th>
+                    <th>Keuangan</th>
+                    <th>Progres Keuangan</th>
+                    <th>Progres Fisik</th>
+                    {{-- <th>Kodeoutput</th> --}}
                 </tr>
             </thead>
             <tbody>
-                @foreach($databalaipaket as $no => $row)
+                @foreach($databalaipaket->groupBy('kdoutput') as $kodeoutputgroup)
+                {{-- @foreach ($collection as $item) --}}
+
+                <tr class="bg-indigo-100">
+                    <td class="border px-4 py-2 font-bold" colspan="2">
+                        {{ $kodeoutputgroup[0]->kodeoutput->nmoutput }}
+                    </td>
+                    <td class="border px-4 py-2"></td>
+                    <td class="border px-4 py-2"></td>
+                    <td class="border px-4 py-2"></td>
+                    <td class="border px-4 py-2"></td>
+                    @foreach ($kodeoutputgroup as $row)
                 <tr>
-                <td class="border px-4 py-2">{{ ($databalaipaket->currentPage()-1) * $databalaipaket->perPage() + $loop->index + 1 }}</td>
+                    <td class="border px-4 py-2">
+                        {{  $loop->index + 1 }}</td>
                     <td class="border px-4 py-2">{{$row->nmpaket}}</td>
                     <td class="border px-4 py-2 text-right">{{number_format($row->pagurmp)}}</td>
                     <td class="border px-4 py-2 text-right">
@@ -46,21 +58,33 @@
                     {{-- <td class="border px-4 py-2">{{ $row->kodeoutput->nmoutput }}</td> --}}
                 </tr>
                 @endforeach
+                </tr>
+                {{-- <tr class="bg-gray-100 border px-4 py-2">
+                    <td></td>
+                    <td>Jumlah</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> --}}
+                {{-- @endforeach --}}
+                @endforeach
             </tbody>
-            <tfoot>
-                <td></td>
-                                      <td></td>
-                                      <td class="text-right">{{number_format($databalaipaketrekap->sum('pagurmp'))}}
-                                      </td>
-                                      <td class="text-right">{{number_format($databalaipaketrekap->sum('keuangan'))}}
-                                      </td>
-                                      <td class="text-right">
-                                        {{number_format((($databalaipaketrekap->sum('keuangan'))/($databalaipaketrekap->sum('pagurmp'))*100),2)}}
-                                      </td>
-                                      <td class="text-right">
-                                        {{number_format(($databalaipaketrekap->avg('fisik')),2)}}
-                                      </td>
-            </tfoot>
+            {{-- <tfoot class="bg-indigo-100 border px-4 py-2 font-bold">
+                <td class="border px-4 py-2 text-right"></td>
+                <td class="border px-4 py-2 text-right"></td>
+                <td class="border px-4 py-2 text-right">{{number_format($databalaipaketrekap->sum('pagurmp'))}}
+            </td>
+            <td class="border px-4 py-2 text-right">{{number_format($databalaipaketrekap->sum('keuangan'))}}
+            </td>
+            <td class="border px-4 py-2 text-right">
+                {{number_format((($databalaipaketrekap->sum('keuangan'))/($databalaipaketrekap->sum('pagurmp'))*100),2)}}
+            </td>
+            <td class="border px-4 py-2 text-right">
+                {{number_format(($databalaipaketrekap->avg('fisik')),2)}}
+            </td>
+            <td></td>
+            </tfoot> --}}
         </table>
         {{ $databalaipaket->links() }}
         <div>

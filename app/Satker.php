@@ -17,10 +17,14 @@ class Satker extends Model
 
     public function paket()
     {
-        return $this->hasMany(Paket::class,'kdsatker','kdsatker');
+        return $this->hasMany(Paket::class, 'kdsatker', 'kdsatker');
     }
     public function progres()
     {
-        return $this->hasManyThrough(Progres::class, Paket::class, 'kdsatker', 'paket_id', 'kdsatker','id' );
+        return $this->hasManyThrough(Progres::class, Paket::class, 'kdsatker', 'paket_id', 'kdsatker', 'id');
+    }
+    public function ppk()
+    {
+        return $this->hasMany(Ppk::class, 'kdsatker', 'kdsatker');
     }
 }

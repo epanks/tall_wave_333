@@ -20,8 +20,16 @@ class Balai extends Model
     {
         return $this->hasManyThrough(Kodeoutput::class, Paket::class, 'balai_id', 'kdoutput', 'id', 'kdoutput');
     }
-    public function progres()
+    public function ppk()
     {
-        return $this->hasManyThrough(Progres::class, Paket::class);
+        return $this->hasMany(Ppk::class);
     }
+    public function ws()
+    {
+        return $this->hasMany(Ws::class);
+    }
+    // public function progres()
+    // {
+    //     return $this->hasManyThrough(Progres::class, Paket::class);
+    // }
 }

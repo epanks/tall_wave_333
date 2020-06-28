@@ -45,6 +45,7 @@ class BalaiPaketList extends Component
                     'balai_id' => $this->balai_id,
                     'ta' => 2020
                 ])
+                ->orderBy('kdoutput', 'asc')
                 ->paginate(10)
         ]);
     }

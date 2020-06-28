@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::livewire('/balai-list', 'balai.balai-list')->layout('layouts.app')->name('balai-list');
     Route::livewire('/balai-paket-list/{id}', 'balai.balai-paket-list')->layout('layouts.app')->name('balai-paket-list');
 
+    Route::livewire('/paket-list', 'paket.paket-list')->layout('layouts.app')->name('paket-list');
+    Route::livewire('/paket-create', 'paket.paket-create')->layout('layouts.app')->name('paket-create');
     //Program
     Route::livewire('/balai-usulan-list', 'program.balai-usulan-list')->layout('layouts.app')->name('balai-usulan-list');
 });

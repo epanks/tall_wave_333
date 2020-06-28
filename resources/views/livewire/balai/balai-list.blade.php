@@ -28,19 +28,35 @@
                 </tr>
             </thead>
             <tbody>
+                {{-- {{ $sumpagupaket }} --}}
                 @foreach($databalai as $no => $row)
                 <tr>
                     <td class="border px-4 py-2">{{$no+1}}</td>
-                    <td class="border px-4 py-2"><a href={{ route('balai-paket-list',$row->id)}}>{{$row->nmbalai}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->paket->sum('pagurmp'))}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->sum('keuangan'))}}</td>
-                    <td class="border px-4 py-2 text-right">
-                        {{number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2) == 0 ? 0 : number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2)}}
+                    <td class="border px-4 py-2"><a href={{ route('balai-paket-list',$row->id)}}>{{$row->nmbalai}}
                     </td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->avg('fisik'),2)}}</td>
+                    <td class="border px-4 py-2 text-right">
+                        {{number_format($row->sumpagu)}}</td>
+                    <td class="border px-4 py-2 text-right">
+                        {{number_format($row->sumpagu)== 0 ? 0 :number_format($row->sumkeu)}}
+                    </td>
+                    <td class="border px-4 py-2 text-right">
+                        {{number_format($row->sumpagu) == 0 ? 0 : number_format((($row->sumkeu/$row->sumpagu)*100),2)}}
+                    </td>
+                    <td class="border px-4 py-2 text-right">{{number_format($row->avgfisik,2)}}</td>
                 </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td class="border px-4 py-2 text-right">Jumlah</td>
+                    <td class="border px-4 py-2 text-right">{{ number_format($databalai->sum('sumpagu'),2) }}</td>
+                    <td class="border px-4 py-2 text-right">{{ number_format($databalai->sum('sumkeu'),2) }}</td>
+                    <td class="border px-4 py-2 text-right">
+                        {{ number_format($databalai->avg('sumkeu')/$databalai->avg('sumpagu')*100,2) }}</td>
+                    <td class="border px-4 py-2 text-right">{{ number_format($databalai->avg('avgfisik'),2) }}</td>
+                </tr>
+            </tfoot>
         </table>
         <div>
         </div>

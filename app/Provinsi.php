@@ -17,8 +17,8 @@ class Provinsi extends Model
         return $this->hasMany(Paket::class, 'kdprovinsi', 'kdprovinsi');
     }
 
-    // public function kabupaten()
-    // {
-    //     return $this->hasMany(Kabupaten::class,'kdprovinsi','kdprovinsi');
-    // }
+    public function kabupaten()
+    {
+        return $this->hasMany(Kabupaten::class, 'kdprovinsi', 'kdprovinsi');
+    }
 }

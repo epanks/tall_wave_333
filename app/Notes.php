@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notes extends Model
 {
     protected $table = 'notes';
-    protected $fillable = [
-        'nmcatatan', 'keterangan', 'lampiran', 'paket_id'
-    ];
+    protected $guarded = [];
 
     public function paket()
     {

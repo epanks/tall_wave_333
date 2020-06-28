@@ -8,22 +8,21 @@
                     <th class="bg-indigo-300 border px-4 py-2">No</th>
                     <th class="bg-indigo-300 border px-4 py-2">Nama Balai</th>
                     <th class="bg-indigo-300 border px-4 py-2">Pagu</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Keuangan</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Progres Keuangan</th>
-                    <th class="bg-indigo-300 border px-4 py-2">Progres Fisik</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($databalai as $no => $row)
+                @foreach($databalaiusulan as $no => $row)
                 <tr>
                     <td class="border px-4 py-2">{{$no+1}}</td>
-                    <td class="border px-4 py-2"><a href={{ route('balai-paket-list',$row->id)}}>{{$row->nmbalai}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->paket->sum('pagurmp'))}}</td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->sum('keuangan'))}}</td>
+                    <td class="border px-4 py-2">{{$row->nmbalai}}
+                    </td>
+                    <td class="border px-4 py-2 text-right">
+                        {{number_format($row->sumpagu)}}</td>
+                    {{-- <td class="border px-4 py-2 text-right">{{number_format($row->progres->sum('keuangan'))}}</td>
                     <td class="border px-4 py-2 text-right">
                         {{number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2) == 0 ? 0 : number_format((($row->progres->sum('keuangan')/$row->paket->sum('pagurmp'))*100),2)}}
                     </td>
-                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->avg('fisik'),2)}}</td>
+                    <td class="border px-4 py-2 text-right">{{number_format($row->progres->avg('fisik'),2)}}</td> --}}
                 </tr>
                 @endforeach
             </tbody>

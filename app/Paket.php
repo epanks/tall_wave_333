@@ -95,4 +95,8 @@ class Paket extends Model
     {
         return $this->hasMany(Foto::class);
     }
+    public function ppk()
+    {
+        return $this->belongsTo(Ppk::class);
+    }
 }
