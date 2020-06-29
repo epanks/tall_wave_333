@@ -118,8 +118,8 @@
                                 </select>
                             </div>
                             <div class="mb-5">
-                                <label for="ks" class="block font-medium mb-1">Kontrak/Swakelola</label>
-                                <select class="w-full form-input" wire:model="ks">
+                                <label for="ks_id" class="block font-medium mb-1">Kontrak/Swakelola</label>
+                                <select class="w-full form-input" wire:model="ks_id">
                                     <option value="">===Select K/S===</option>
                                     </option>
                                     @foreach ($dataks as $item)
@@ -128,8 +128,8 @@
                                 </select>
                             </div>
                             <div class="mb-5">
-                                <label for="sycmyc" class="block font-medium mb-1">SYC/MYC</label>
-                                <select class="w-full form-input" wire:model="sycmyc">
+                                <label for="sycmyc_id" class="block font-medium mb-1">SYC/MYC</label>
+                                <select class="w-full form-input" wire:model="sycmyc_id">
                                     <option value="">===Select SYC/MYC===</option>
                                     </option>
                                     @foreach ($datasycmyc as $item)

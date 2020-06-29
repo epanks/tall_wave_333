@@ -15,6 +15,19 @@ use Livewire\Component;
 
 class PaketCreate extends Component
 {
+    public $nmpaket;
+    public $pagurmp;
+    public $ta;
+    public $kdoutput;
+    public $sycmyc_id;
+    public $ks_id;
+    public $trgoutput;
+    public $satoutput_id;
+    public $ppk_id;
+    public $apbnsbsn_id;
+    public $fnf_id;
+    public $trgoutcome;
+    public $satoutcome_id;
     public $databalai;
     public $balai_id;
     public $kdsatker;
