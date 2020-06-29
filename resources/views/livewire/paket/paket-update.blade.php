@@ -2,14 +2,15 @@
     <div class="flex">
         <div class="flex md:flex-row-reverse flex-wrap">
             <div class="bg-white rounded border border-cool-gray-200 p-5">
-                <h1 class="capitalize text-lg text-cool-gray-700 mb-5">Tambah Paket</h1>
+                <h1 class="capitalize text-lg text-cool-gray-700 mb-5">Update Paket</h1>
                 <div class="">
 
                 </div>
 
-                <form wire:submit.prevent="paket-create">
+                <form wire:submit.prevent="paket-update">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
+                            <input type="hidden" wire:model="paketId">
                             <div class="mb-5">
                                 <label for="nmpaket" class="block font-medium mb-1">Nama Paket</label>
                                 <textarea type="text" wire:model.lazy="nmpaket" placeholder="Nama Paket" id="nmpaket"
@@ -143,8 +144,12 @@
             <div class="py-4">
                 <button type="submit"
                     class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Save
+                    Update
                 </button>
+                {{-- <button wire:click.prevent="cancel()"
+                    class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-indigo-700 transition duration-150 ease-in-out">
+                    Update
+                </button> --}}
             </div>
             </form>
         </div>

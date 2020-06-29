@@ -1,15 +1,15 @@
 <div class="container">
     @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
     @endif
-  
-    @if($updateMode)
-        @include('livewire.paket.paket-list.update')
+
+    {{-- @if($updateMode)
+    @include('livewire.paket.paket-update')
     @else
-        @include('livewire.paket.paket-create')
-    @endif
+    @include('livewire.paket.paket-create')
+    @endif --}}
     {{-- <div>
         <div class="py-2 px-10 right-0 md:w-5/12">
             <input wire:model.debounce.500ms="search" type="text"
@@ -45,7 +45,7 @@
                     <th class="bg-indigo-300 border px-4 py-2">Keuangan</th>
                     <th class="bg-indigo-300 border px-4 py-2">Progres Keuangan</th>
                     <th class="bg-indigo-300 border px-4 py-2">Progres Fisik</th>
-                    {{-- <th class="bg-indigo-300 border px-4 py-2">Kodeoutput</th> --}}
+                    <th class="bg-indigo-300 border px-4 py-2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,15 @@
                         {{$row->pagurmp == 0 ? 0 : number_format((($row->progres->keuangan)/($row->pagurmp)*100),2)}}
                     </td>
                     <td class="border px-4 py-2 text-right">{{number_format(($row->progres->fisik),2)}}</td>
-                    {{-- <td class="border px-4 py-2">{{ $row->kodeoutput->nmoutput }}</td> --}}
+                    <td class="border px-4 py-2"><a type="button" href="{{ route('paket-update', $row->id)}}" class="flex justify-center h-6 px-4 py-0 text-sm font-medium text-white bg-indigo-600 border
+                    border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
+                    focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                            Edit
+                        </a>
+                        <button type="submit"
+                            class="flex justify-center h-6 px-2 py-0 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                            Delete
+                        </button></td>
                 </tr>
                 @endforeach
             </tbody>

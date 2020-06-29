@@ -21,7 +21,7 @@ class PaketCreate extends Component
     public $kdoutput;
     // public $sycmyc_id;
     public $trgoutput;
-    // public $satoutput_id;
+    public $datasatoutput;
     public $datappk;
     // public $apbnsbsn_id;
     // public $fnf_id;
@@ -38,6 +38,7 @@ class PaketCreate extends Component
     public $datasatoutcome;
     // public $updateMode = false;
     public $datasatker = [];
+    public $filterppk = [];
 
     public function mount()
     {
@@ -84,6 +85,9 @@ class PaketCreate extends Component
     {
         if (!empty($this->balai_id)) {
             $this->datasatker = Satker::where('balai_id', $this->balai_id)->get();
+        }
+        if (!empty($this->kdsatker)) {
+            $this->filterppk = Ppk::where('kdsatker', $this->kdsatker)->get();
         }
         return view('livewire.paket.paket-create');
     }
