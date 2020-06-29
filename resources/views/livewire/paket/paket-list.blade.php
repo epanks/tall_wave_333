@@ -6,9 +6,9 @@
     @endif
   
     @if($updateMode)
-        @include('livewire.update')
+        @include('livewire.paket.paket-list.update')
     @else
-        @include('livewire.create')
+        @include('livewire.paket.paket-create')
     @endif
     {{-- <div>
         <div class="py-2 px-10 right-0 md:w-5/12">
