@@ -1,4 +1,15 @@
 <div class="container">
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+  
+    @if($updateMode)
+        @include('livewire.update')
+    @else
+        @include('livewire.create')
+    @endif
     {{-- <div>
         <div class="py-2 px-10 right-0 md:w-5/12">
             <input wire:model.debounce.500ms="search" type="text"

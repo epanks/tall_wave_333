@@ -27,7 +27,7 @@
                     <th>Keuangan</th>
                     <th>Progres Keuangan</th>
                     <th>Progres Fisik</th>
-                    {{-- <th>Kodeoutput</th> --}}
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +38,7 @@
                     <td class="border px-4 py-2 font-bold" colspan="2">
                         {{ $kodeoutputgroup[0]->kodeoutput->nmoutput }}
                     </td>
+                    <td class="border px-4 py-2"></td>
                     <td class="border px-4 py-2"></td>
                     <td class="border px-4 py-2"></td>
                     <td class="border px-4 py-2"></td>
@@ -55,7 +56,16 @@
                         {{$row->pagurmp == 0 ? 0 : number_format((($row->progres->keuangan)/($row->pagurmp)*100),2)}}
                     </td>
                     <td class="border px-4 py-2 text-right">{{number_format(($row->progres->fisik),2)}}</td>
-                    {{-- <td class="border px-4 py-2">{{ $row->kodeoutput->nmoutput }}</td> --}}
+                    <td class="border px-4 py-2">
+                        <a type="button" href="{{ route('paket-create') }}"
+                class="flex justify-center h-6 px-4 py-0 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                Edit
+            </a>
+            <button type="submit"
+            class="flex justify-center h-6 px-2 py-0 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+            Delete
+        </button>
+                    </td>
                 </tr>
                 @endforeach
                 </tr>
