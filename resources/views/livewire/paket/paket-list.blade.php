@@ -67,7 +67,7 @@
                     focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                             Edit
                         </a>
-                        <button type="submit"
+                        <button onclick="return confirm('Apakah anda yakin akan hapus?') || event.stopImmediatePropagation()" type="button" wire:click="delete({{ $row->id }})"
                             class="flex justify-center h-6 px-2 py-0 text-sm font-medium text-white bg-red-500 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                             Delete
                         </button></td>

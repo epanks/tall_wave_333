@@ -137,9 +137,49 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="mb-5">
+                                <label for="kdprovinsi" class="block font-medium mb-1">Provinsi</label>
+                                <select name="kdprovinsi" class="w-full form-input" wire:model="kdprovinsi">
+                                    <option value="">Select Provinsi</option>
+                                    </option>
+                                    @foreach ($dtprovinsi as $item)
+                                    <option value="{{$item->kdprovinsi}}">{{$item->nmprovinsi}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-5">
+                                <label for="kdkabupaten" class="block font-medium mb-1">Kabupaten</label>
+                                <select name="kdkabupaten" class="w-full form-input" wire:model="kdkabupaten">
+                                    <option value="">Select Kabupaten</option>
+                                    </option>
+                                    @foreach ($this->filterkabupaten as $item)
+                                    <option value="{{$item->kdkabupaten}}">{{$item->nmkabupaten}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-5">
+                                <label for="kdkecamatan" class="block font-medium mb-1">Kecamatan</label>
+                                <select name="kdkecamatan" class="w-full form-input" wire:model="kdkecamatan">
+                                    <option value="">Select Kecamatan</option>
+                                    </option>
+                                    @foreach ($this->filterkecamatan as $item)
+                                    <option value="{{$item->kdkecamatan}}">{{$item->nmkecamatan}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-5">
+                                <label for="kddesa" class="block font-medium mb-1">Desa</label>
+                                <select name="kddesa" class="w-full form-input" wire:model="kddesa">
+                                    <option value="">Select Desa</option>
+                                    </option>
+                                    @foreach ($this->filterdesa as $item)
+                                    <option value="{{$item->kddesa}}">{{$item->nmdesa}}</option>
+                            @endforeach
+                            </select>
+                        </div>
                         </div>
                     </div>
-            </div>
+            
             <div class="py-4">
                 <button type="submit"
                     class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">

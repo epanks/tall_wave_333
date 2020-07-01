@@ -87,7 +87,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="mb-5">
+                            <div class="mb-5">
                                 <label for="kddesa" class="block font-medium mb-1">Desa</label>
                                 <select name="kddesa" class="w-full form-input" wire:model="kddesa">
                                     <option value="">Select Desa</option>
@@ -96,7 +96,7 @@
                                     <option value="{{$item->kddesa}}">{{$item->nmdesa}}</option>
                             @endforeach
                             </select>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="w-full md:w-1/4 px-3">
                         <div class="mb-5">

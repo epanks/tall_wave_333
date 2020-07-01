@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Paket;
 
 use Illuminate\Http\Request;
 use App\Paket;
+use App\Progres;
 use Livewire\Component;
 
 class PaketList extends Component
@@ -63,13 +64,14 @@ class PaketList extends Component
     {
         $updatepaket = Paket::find($id);
         $updatepaket->update($request->all());
-
+        session()->flash('message', 'Paket Update Successfully.');
         return redirect()->back();
     }
 
     public function delete($id)
     {
         Paket::find($id)->delete();
+        Progres::where('paket_id', $id)->delete();
         session()->flash('message', 'Paket Deleted Successfully.');
     }
 

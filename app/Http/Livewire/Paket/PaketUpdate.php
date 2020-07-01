@@ -33,7 +33,7 @@ class PaketUpdate extends Component
         $this->dtsatker = Satker::where('wilayah_id', 3)->get();
         $this->dtsatoutput = Satoutput::get();
         $this->dtsatoutcome = Satoutcome::get();
-        //$this->dtdesa = Desa::get();
+        $this->dtdesa = Desa::get();
         $this->dtkecamatan = Kecamatan::get();
         $this->dtkabupaten = Kabupaten::where('wilayah_id', 3)->get();
         $this->dtprovinsi = Provinsi::where('wilayah_id', 3)->get();
@@ -126,9 +126,9 @@ class PaketUpdate extends Component
         if (!empty($this->kdkabupaten)) {
             $this->filterkecamatan = Kecamatan::where('kdkabupaten', $this->kdkabupaten)->get();
         }
-        // if (!empty($this->kdkecamatan)) {
-        //     $this->filterdesa = Desa::where('kdkecamatan', $this->kdkecamatan)->get();
-        // }
+        if (!empty($this->kdkecamatan)) {
+            $this->filterdesa = Desa::where('kdkecamatan', $this->kdkecamatan)->get();
+        }
         // dd($this->filterdesa);
         return view('livewire.paket.paket-update');
     }

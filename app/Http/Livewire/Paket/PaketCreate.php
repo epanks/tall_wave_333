@@ -3,10 +3,15 @@
 namespace App\Http\Livewire\Paket;
 
 use App\Balai;
+use App\Desa;
+use App\Kabupaten;
+use App\Kecamatan;
 use App\Kodeoutput;
 use App\Ks;
 use App\Paket;
 use App\Ppk;
+use App\Progres;
+use App\Provinsi;
 use App\Satker;
 use App\Satoutcome;
 use App\Satoutput;
@@ -29,6 +34,7 @@ class PaketCreate extends Component
     public $satoutcome_id;
     public $satoutput_id;
     public $fisik = 0;
+    public $wilayah_id = 3;
     public $balai_id;
     public $ppk_id;
     public $ks_id;
@@ -39,12 +45,21 @@ class PaketCreate extends Component
     public $datasycmyc;
     public $dataoutput;
     public $datasatoutcome;
+    public $dtdesa;
+    public $dtkecamatan;
+    public $dtkabupaten;
+    public $dtprovinsi;
+
     // public $updateMode = false;
     public $datasatker = [];
     public $filterppk = [];
 
     public function mount()
     {
+        $this->dtdesa = Desa::get();
+        $this->dtkecamatan = Kecamatan::get();
+        $this->dtkabupaten = Kabupaten::where('wilayah_id', 3)->get();
+        $this->dtprovinsi = Provinsi::where('wilayah_id', 3)->get();
         $this->datasatoutput = Satoutput::get();
         $this->datasatoutcome = Satoutcome::get();
         $this->datappk = Ppk::get();
@@ -78,11 +93,20 @@ class PaketCreate extends Component
             'ks_id'   => $this->ks_id,
             'sycmyc_id'   => $this->sycmyc_id,
             'trgoutcome'   => $this->trgoutcome,
-        ])->progres()->create([
+            'wilayah_id'   => $this->wilayah_id,
+            'kdprovinsi' => $this->kdprovinsi,
+            'kdkabupaten' => $this->kdkabupaten,
+            'kdkecamatan' => $this->kdkecamatan,
+            'kddesa' => $this->kddesa,
+        ]);
+        $this->paketId = $paket->id;
+        $progres = Progres::create([
             'keuangan'   => $this->keuangan,
             'fisik'      => $this->fisik,
+            'paket_id' => $this->paketId,
+            'balai_id' => $this->balai_id,
         ]);
-        //dd($this->paket);
+        //dd($progres);
         session()->flash('success', 'Data berhasil disimpan');
         return redirect()->route('paket-list');
     }
@@ -94,6 +118,15 @@ class PaketCreate extends Component
         }
         if (!empty($this->kdsatker)) {
             $this->filterppk = Ppk::where('kdsatker', $this->kdsatker)->get();
+        }
+        if (!empty($this->kdprovinsi)) {
+            $this->filterkabupaten = Kabupaten::where('kdprovinsi', $this->kdprovinsi)->get();
+        }
+        if (!empty($this->kdkabupaten)) {
+            $this->filterkecamatan = Kecamatan::where('kdkabupaten', $this->kdkabupaten)->get();
+        }
+        if (!empty($this->kdkecamatan)) {
+            $this->filterdesa = Desa::where('kdkecamatan', $this->kdkecamatan)->get();
         }
         return view('livewire.paket.paket-create');
     }
