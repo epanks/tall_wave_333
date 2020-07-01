@@ -16,8 +16,9 @@ class CreatePpksTable extends Migration
         Schema::create('ppk', function (Blueprint $table) {
             $table->id();
             $table->string('nmppk', 40);
-            $table->string('kdsatker');
-            $table->string('phone')->nullable();
+            $table->string('jabatanppk', 200)->nullable();
+            $table->string('kdsatker', 8)->nullable();
+            $table->string('phone', 15)->nullable();
             $table->foreignId('wilayah_id')->nullable();
             $table->foreignId('balai_id')->nullable();
             $table->timestamps();

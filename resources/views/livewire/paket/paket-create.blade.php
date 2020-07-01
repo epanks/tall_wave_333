@@ -7,7 +7,7 @@
 
                 </div>
 
-                <form wire:submit.prevent="paket-create">
+                <form wire:submit.prevent="store">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-2/4 px-3 mb-6 md:mb-0">
                             <div class="mb-5">

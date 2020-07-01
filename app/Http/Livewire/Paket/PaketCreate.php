@@ -15,22 +15,25 @@ use Livewire\Component;
 
 class PaketCreate extends Component
 {
-    // public $nmpaket;
-    // public $pagurmp;
-    // public $ta;
+    public $nmpaket;
+    public $pagurmp;
+    public $ta;
     public $kdoutput;
-    // public $sycmyc_id;
+    public $sycmyc_id;
     public $trgoutput;
     public $datasatoutput;
     public $datappk;
-    // public $apbnsbsn_id;
-    // public $fnf_id;
+    public $apbnsbsn_id;
+    public $fnf_id;
     public $trgoutcome;
-    // public $satoutcome_id;
-    public $fisik;
+    public $satoutcome_id;
+    public $satoutput_id;
+    public $fisik = 0;
     public $balai_id;
+    public $ppk_id;
+    public $ks_id;
     public $kdsatker;
-    public $keuangan;
+    public $keuangan = 0;
     public $databalai;
     public $dataks;
     public $datasycmyc;
@@ -71,6 +74,9 @@ class PaketCreate extends Component
             'kdsatker'   => $this->kdsatker,
             'kdoutput'   => $this->kdoutput,
             'trgoutput'   => $this->trgoutput,
+            'ppk_id'   => $this->ppk_id,
+            'ks_id'   => $this->ks_id,
+            'sycmyc_id'   => $this->sycmyc_id,
             'trgoutcome'   => $this->trgoutcome,
         ])->progres()->create([
             'keuangan'   => $this->keuangan,
@@ -78,7 +84,7 @@ class PaketCreate extends Component
         ]);
         //dd($this->paket);
         session()->flash('success', 'Data berhasil disimpan');
-        return redirect()->route('paket.list');
+        return redirect()->route('paket-list');
     }
 
     public function render()

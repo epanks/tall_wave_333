@@ -12,7 +12,8 @@ class WilayahTableSeeder extends Seeder
     public function run()
     {
         DB::insert("INSERT INTO `wilayah` (`id`, `nmwilayah`) VALUES
-        (1, 'Wilayah Barat'),
-        (2, 'Wilayah Timur');");
+        (1, 'Wilayah 1'),
+        (2, 'Wilayah 2'),
+        (3, 'Wilayah 3');");
     }
 }

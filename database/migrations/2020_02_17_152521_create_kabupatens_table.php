@@ -21,7 +21,8 @@ class CreateKabupatensTable extends Migration
             $table->string('kdws', 2)->nullable();
             $table->string('kddas', 2)->nullable();
             $table->string('kdcat', 2)->nullable();
-
+            $table->foreignId('wilayah_id');
+            $table->timestamps();
             //$table->foreign('kdprovinsi')->references('kdprovinsi')->on('provinsi');
         });
     }

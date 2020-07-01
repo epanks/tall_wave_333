@@ -17,6 +17,7 @@ class CreateProvinsisTable extends Migration
             $table->id();
             $table->string('kdprovinsi', 2)->unique();
             $table->string('nmprovinsi', 250);
+            $table->foreignId('wilayah_id');
         });
     }
 
