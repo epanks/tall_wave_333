@@ -29,6 +29,6 @@ class Satker extends Model
     }
     public function provinsi()
     {
-        return $this->belongsToMany(Provinsi::class, 'kdprovinsi', 'kdprovinsi');
+        return $this->belongsToMany(Provinsi::class, 'provinsi_satker_id', 'kdsatker', 'kdprovinsi');
     }
 }

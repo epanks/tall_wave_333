@@ -23,6 +23,6 @@ class Provinsi extends Model
     }
     public function satker()
     {
-        return $this->belongsToMany(Satker::class, 'kdsatker', 'kdsatker');
+        return $this->belongsToMany(Satker::class, 'provinsi_satker_id', 'kdprovinsi', 'kdsatker');
     }
 }
