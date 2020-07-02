@@ -27,4 +27,8 @@ class Satker extends Model
     {
         return $this->hasMany(Ppk::class, 'kdsatker', 'kdsatker');
     }
+    public function provinsi()
+    {
+        return $this->belongsToMany(Provinsi::class, 'kdprovinsi', 'kdprovinsi');
+    }
 }

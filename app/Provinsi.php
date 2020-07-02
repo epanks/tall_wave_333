@@ -21,4 +21,8 @@ class Provinsi extends Model
     {
         return $this->hasMany(Kabupaten::class, 'kdprovinsi', 'kdprovinsi');
     }
+    public function satker()
+    {
+        return $this->belongsToMany(Satker::class, 'kdsatker', 'kdsatker');
+    }
 }

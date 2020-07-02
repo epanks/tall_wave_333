@@ -120,15 +120,38 @@ class PaketUpdate extends Component
         if (!empty($this->kdsatker)) {
             $this->filterppk = Ppk::where('kdsatker', $this->kdsatker)->get();
         }
-        if (!empty($this->kdprovinsi)) {
+        if (empty($this->kdprovinsi)) {
+            $this->dtprovinsi = Provinsi::where('wilayah_id', 3)->get();
+        } else {
             $this->filterkabupaten = Kabupaten::where('kdprovinsi', $this->kdprovinsi)->get();
         }
-        if (!empty($this->kdkabupaten)) {
+        if (empty($this->kdkabupaten)) {
+            $this->filterkabupaten = Kabupaten::where('wilayah_id', 3)->get();
+        } else {
             $this->filterkecamatan = Kecamatan::where('kdkabupaten', $this->kdkabupaten)->get();
         }
-        if (!empty($this->kdkecamatan)) {
+        if (empty($this->kdkecamatan)) {
+            $this->filterkecamatan = Kecamatan::get();
+        } else {
             $this->filterdesa = Desa::where('kdkecamatan', $this->kdkecamatan)->get();
         }
+        if (empty($this->kddesa)) {
+            $this->filterdesa = Desa::get();
+        }
+
+
+
+
+        // if (!empty($this->kdprovinsi)) {
+        //     $this->filterkabupaten = Kabupaten::where('kdprovinsi', $this->kdprovinsi)->get();
+        // }
+        // if (!empty($this->kdkabupaten)) {
+        //     $this->filterkecamatan = Kecamatan::where('kdkabupaten', $this->kdkabupaten)->get();
+        // }
+        // if (!empty($this->kdkecamatan)) {
+        //     $this->filterdesa = Desa::where('kdkecamatan', $this->kdkecamatan)->get();
+        // }
+
         // dd($this->filterdesa);
         return view('livewire.paket.paket-update');
     }
